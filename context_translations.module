@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Notify CTools that we'll be using the plugin API with Context module
+ */
+function context_translations_ctools_plugin_api($module, $api) {  
+  if ($module == 'context' && $api == 'plugins') {
+    return array('version' => 3);
+  }
+}
+
+/**
+ * Implementation of hook_context_page_condition().
+ */
+function context_translations_context_page_condition() {
+  // Load the publish plugin and see execute.
+  if ($plugin = context_get_plugin('condition', 'translations')) {
+    $plugin->execute();
+  }
+}
+
+/**
+ * Registry hook for conditions & reactions.
+ */
+function context_translations_context_registry() {
+  return array(
+    'conditions' => array(
+      'translations' => array(
+        'title' => t('Translated from node'),
+        'plugin' => 'context_condition_translations',
+      ),
+    ),
+  );
+}
+
+/**
+ * CTools plugin API hook for Context
+ */
+function context_translations_context_plugins() {
+  $plugins = array();
+  $plugins['context_translations'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'context_translations') .'/plugins',
+      'file' => 'context_condition_translations.inc',
+      'class' => 'context_condition_translations',
+      'parent' => 'context_condition',
+    ),
+  );
+
+  return $plugins;
+}

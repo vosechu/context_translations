@@ -1,0 +1,3 @@
+Drupal modules that adds a reaction for children of a translatable node. Currently in Drupal with the i18n module it's extremely difficult to get a block to show up on a translated node page since the title and slug changes for each translation. This allows you to pair up with the CSS Injector module to add body classes and/or show blocks on just this page.
+
+This is frameworked from the context_primary_links module by pzingg which can be found here: http://github.com/pzingg/context_primary_links with a lot of advice from Neil Hastings' post about Context here: http://treehouseagency.com/blog/neil-hastings/2010/04/14/joy-extending-context

@@ -1,0 +1,10 @@
+; general
+name = "Context: Translated nodes"
+description = "Adds a condition that triggers when in a child translation of some node"
+package = "Context"
+dependencies[] = context
+core = "6.x"
+; packaging
+version = "6.x-1.0-dev"
+core = "6.x"
+project = "context_translations"
